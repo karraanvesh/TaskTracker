@@ -1,28 +1,22 @@
 import { getTimestamp } from "./utils/dateTime.js";
+import { deleteTask } from "./utils/deleteTask.js";
+import { listTasksByStatus } from "./utils/helpers/listTasks.js";
+import { idGenerator } from "./utils/taskIdGenerator.js";
+import { updateTask, updateTaskStatus } from "./utils/taskUpdater.js";
+import { writeIntoFile } from "./utils/taskWriter.js";
 
 function addTask(cliArguments) {
     const taskDescription = cliArguments[3];
 
-    // we need to define the properties of the task , before we add / write this task
-    // into the json file
-
-    console.log("after increment : " , process.env.counter)
-
-    // todo : implement the incremental id generator logic using filesystem
-    /**
-     * search for : how do i implement a incremental tasks id in js , 
-     * even if i recompile the counter should resume from the previous value not from start
-     * 
-     * for examples of how to implement in backend
-     */
     let task = {
+        id : idGenerator(),
         description : taskDescription,
         status : "todo",
         createdAt : getTimestamp(),
         updatedAt : getTimestamp()
     };
 
-    console.log("task is : " , task);
+    writeIntoFile(task);
 }
 const cliArguments = process.argv;
 
@@ -36,22 +30,32 @@ switch(operation) {
     break;
 
     case "delete" :
-        console.log("delete operation");
+        const taskId = Number(process.argv[3]);
+        deleteTask(taskId);
     break;
 
     case "update" :
-        console.log("update operation");
+        const id = Number(process.argv[3]);
+        const description = process.argv[4];
+        updateTask(id , description);
     break;
 
     case "mark-in-progress" :
-        console.log("mark-in-progress operation");
+        updateTaskStatus(Number(process.argv[3]) , "in-progress")
     break;
 
     case "mark-done" :
-        console.log("mark-done operation");
+        updateTaskStatus(Number(process.argv[3]) , "done")
     break;
 
     case "list" :
-        console.log("list operation");
+        const noOfArguments = process.argv.length;
+
+        if(noOfArguments == 3) {
+            listTasksByStatus(null);
+        } else {
+            listTasksByStatus(process.argv[3]);
+        }
+        
     break;
 }
