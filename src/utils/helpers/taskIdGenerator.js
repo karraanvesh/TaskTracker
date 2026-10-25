@@ -15,7 +15,7 @@ export function idGenerator() {
      * 
      * i.e., /e/Backend_course_development_2025/TaskTracker/taskId.txt
      */
-    const filepath = path.join(import.meta.dirname, '../taskId.txt');
+    const filepath = path.join(import.meta.dirname, './../../taskId.txt');
 
     let currentTaskId = 0;
 
