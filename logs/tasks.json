@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "description": "Buy groceries",
+    "status": "in-progress",
+    "createdAt": "2026-10-26 0:29:20.182",
+    "updatedAt": "2026-10-26 0:31:53.204"
+  },
+  {
+    "id": 2,
+    "description": "Buy vegetables and fruits",
+    "status": "done",
+    "createdAt": "2026-10-26 0:29:33.380",
+    "updatedAt": "2026-10-26 0:32:2.215"
+  },
+  {
+    "id": 3,
+    "description": "Yoga and exercise at 7:00 PM",
+    "status": "todo",
+    "createdAt": "2026-10-26 0:29:44.92",
+    "updatedAt": "2026-10-26 0:31:28.486"
+  },
+  {
+    "id": 4,
+    "description": "Movie at 10:00 PM",
+    "status": "in-progress",
+    "createdAt": "2026-10-26 0:29:53.315",
+    "updatedAt": "2026-10-26 0:31:56.570"
+  },
+  {
+    "id": 5,
+    "description": "xyz",
+    "status": "todo",
+    "createdAt": "2026-10-26 0:42:49.275",
+    "updatedAt": "2026-10-26 0:42:49.275"
+  }
+]
